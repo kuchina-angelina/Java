@@ -3,11 +3,11 @@ import java.lang.*;
 
 
 public class Card {
-    double pay;
-    int number;
-    String name;
-    String last_name;
-    double balance;
+    double pay;//оплата
+    int number;//номер
+    String name;//имя
+    String last_name;//фамилия
+    double balance;//баланс
 
     public Card(int number,String name,String last_name){
         this.number=number;

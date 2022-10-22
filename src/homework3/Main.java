@@ -15,6 +15,7 @@ public class Main {
 //        st.payment(1000);
 //        terminal.payWay(st);
 //        sc.payment(900);
+//        terminal.getStatictic();
 //        terminal.payWay(sc);
 //        school.payment(8998);
 //        terminal.payWay(school);
