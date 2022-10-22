@@ -9,18 +9,17 @@ import java.util.Comparator;
 
 public class Main {
     ArrayList<Workers> employees = new ArrayList<>();
+
     // создание работников для проверки методов, чтобы не создавать в конструкторе каждый раз
     public void setEmployees() {
-        employees.add(new PerHourSalary(1, "Иванов", "Иван", 500));
-        employees.add(new FixedSalary(2, "Петров", "Петр", 50000));
-        employees.add(new PerHourSalary(3, "Сидоров", "Андрей", 210));
-        employees.add(new FixedSalary(4, "Копылов", "Юрий", 50000));
-        employees.add(new PerHourSalary(5, "Авросимова", "Ксения", 456));
-        employees.add(new FixedSalary(6, "Иванова", "Мария", 100000));
-        employees.add(new PerHourSalary(7, "Корнев", "Даниил", 700));
-        employees.add(new FixedSalary(8, "Биляева", "Ольга", 48900));
-        employees.add(new PerHourSalary(9, "Андропова", "Татьяна", 119));
-        employees.add(new FixedSalary(10, "Морозова", "Морозко", 200000));
+        employees.add(new PerHourSalary(1, "Иванов", "Иван", 456));
+        employees.add(new FixedSalary(2, "Петров", "Петр", 74123));
+        employees.add(new PerHourSalary(3, "Сидоров", "Кирилл", 666));
+        employees.add(new FixedSalary(4, "Белов", "Александр", 50000));
+        employees.add(new PerHourSalary(5, "Филатов", "Валера", 456));
+        employees.add(new FixedSalary(6, "Холмагоров", "Космос", 10000));
+        employees.add(new PerHourSalary(7, "Пчелкин", "Виталий", 700));
+        employees.add(new FixedSalary(8, "Беляева", "Ксения", 100000));
     }
 
     public void getEmployees() {
@@ -28,99 +27,83 @@ public class Main {
         for (int i = 0; i < employees.size(); i++) {
             Workers emp = employees.get(i); // берется элемент из списка
             Class class1 = employees.get(i).getClass(); // узнаем, к какому из классов-наследников принадлежит элемент
-            // рассматриваем 2 варианта, чтобы не перепутать методы
             if (class1 == PerHourSalary.class) {
-                int id = ((PerHourSalary) emp).getId();
+                int id = ((PerHourSalary) emp).getId();//берем айди работника из класса PerHourSalary
                 System.out.print(id + ":");
 
-                String first_name = ((PerHourSalary) emp).firstName();
+                String first_name = ((PerHourSalary) emp).firstName();//берем имя работника из класса PerHourSalary
                 System.out.print(first_name + "; ");
 
-                String last_name = ((PerHourSalary) emp).lastName();
+                String last_name = ((PerHourSalary) emp).lastName();//берем фамилию работника из класса PerHourSalary
                 System.out.print(last_name + "; ");
 
-                double salary = ((PerHourSalary) emp).getPer_hourSalary();
+                double salary = ((PerHourSalary) emp).getPer_hourSalary();//берем зп работника из класса PerHourSalary
                 System.out.print(salary + "; " + "\n");
 
             } else if (class1 == FixedSalary.class) {
-                int id = ((FixedSalary) emp).getId();
+                int id = ((FixedSalary) emp).getId(); //берем айди работника из класса FixedSalary
                 System.out.print(id + ":");
-                String first_name = ((FixedSalary) emp).firstName();
+                String first_name = ((FixedSalary) emp).firstName();//берем имя работника из класса FixedSalary
                 System.out.print(first_name + "; ");
 
-                String last_name = ((FixedSalary) emp).lastName();
+                String last_name = ((FixedSalary) emp).lastName();//берем фамилию работника из класса FixedSalary
                 System.out.print(last_name + "; ");
 
-                double salary = ((FixedSalary) emp).getFixed_salary();
+                double salary = ((FixedSalary) emp).getFixed_salary();//берем зп работника из класса FixedSalary
                 System.out.print(salary + "; " + "\n");
             }
         }
     }
 
-    public void sortSalary(){
+    public void sortSalary() {
         employees.sort(new Comparator<Workers>() {
             @Override
             public int compare(Workers worker1, Workers worker2) {
-               if(worker1.countSalary()>worker2.countSalary()){
-                   return -1;
-               }else if(worker1.countSalary()==worker2.countSalary()){
-                   return 0;
-               }else{
-                   return 1;
-               }
+                if (worker1.countSalary() > worker2.countSalary()) {//если зп у worker1 больше,то поменяет местами
+                    return -1;
+                } else if (worker1.countSalary() == worker2.countSalary()) {
+                    return 0;
+                } else {
+                    return 1;
+                }
             }
 
         });
-        for(int i=0;i<employees.size()-1;i++){
+        //сортировка по фамилии
+        for (int i = 0; i < employees.size() - 1; i++) {
             Workers worker1 = employees.get(i);
-            Workers worker2 = employees.get(i+1);
-            int result=worker1.lastName().compareTo(worker2.lastName());
-            if(worker1.countSalary()==worker2.countSalary() && result > 0){
-                Collections.swap(employees,i,i+1);
+            Workers worker2 = employees.get(i + 1);
+            int result = worker1.lastName().compareTo(worker2.lastName());//сравниваем фамилии
+            int result2 = worker1.firstName().compareTo(worker2.firstName());//сравниваем имена
+            if (worker1.countSalary() == worker2.countSalary() && result > 0) {//если одинаковые зарплаты и result возвращает положительное число
+                Collections.swap(employees, i, i + 1);//то меняем местами
+                //аналогично,но если люди однофамильцы
+            } else if (worker1.countSalary() == worker2.countSalary() && worker1.lastName() == worker2.lastName() && result2 > 0) {
+                Collections.swap(employees, i, i + 1);
             }
         }
     }
 
-    public void fivePeople(){
-        for(int i=0;i<5;i++){
+    //выводим первые пять человек из списка
+    public void fivePeople() {
+        for (int i = 0; i < 5; i++) {
             Workers worker = employees.get(i);
-            String last_name = worker.lastName();
-            String fist_name = worker.firstName();
+            String last_name = worker.lastName();//вытаскиваем фамилию
+            String fist_name = worker.firstName();//вытаскиваем имя
             System.out.println(last_name + " " + fist_name);
         }
     }
 
-    public void threePeople(){
-        int j = employees.size()-4;
+    //выводим последних 3 человек
+    public void threePeople() {
+        int j = employees.size() - 4;
         System.out.println(j);
-        for(int i=employees.size()-1;i>j;i--){
+        for (int i = employees.size() - 1; i > j; i--) {//идем с конца списка
             Workers worker = employees.get(i);
             String last_name = worker.lastName();
             String fist_name = worker.firstName();
             System.out.println(last_name + " " + fist_name);
         }
     }
+}
 
-//    public void writeFile(String fileName) {
-//        try(FileWriter fw = new FileWriter(fileName)){
-//            for (int i = 0; i < employees.size(); i++) {
-//                Workers emp = employees.get(i); // берется элемент из списка
-//                // вытаскиваем информацию о работнике из элемента
-//                int id = emp.getId();
-//                String lastName = emp.lastName();
-//                String firstName = emp.firstName();
-//                double salary = emp.countSalary();
-//                // записываем в файл
-//                fw.write("id: " + id + ", first name: " + firstName + ", last name: " + lastName +
-//                        ", salary: " + salary + "; \n");
-//            }
-//            fw.close();
-//        };
-//
-//        }
-//    }
-////
-////    public readFile(){
-////
-//
-//

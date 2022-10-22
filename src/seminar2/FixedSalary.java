@@ -19,17 +19,17 @@ public class FixedSalary extends Workers{
 //        System.out.println("Среднемесячная зарплата = " + fixed_salary);
         return salary;
     }
-
+    //метод из базового класса,возращающий айди
     @Override
     int getId() {
         return id;
     }
-
+    //метод из базового класса,возращающий фамилию
     @Override
     String lastName() {
         return this.last_name;
     }
-
+    //метод из базового класса,возвращающий имя
     @Override
     String firstName() {
         return this.first_name;

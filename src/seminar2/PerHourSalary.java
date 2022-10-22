@@ -2,8 +2,8 @@ package seminar2;
 
 public class PerHourSalary extends Workers{
     int id;
-    String first_name;
-    String last_name;
+    String first_name;//имя
+    String last_name;//фамилия
     double salary;
 
 
