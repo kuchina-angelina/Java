@@ -2,8 +2,8 @@ package homework4;
 
 public class Main {
     public static void main(String[] args) {
-        Reader reader = new Reader("Aгапова К.В", 1, "Экономика",
-                "01.04.2001", 161573186 );
+        Reader reader = new Reader("Aгапова К.Н", 1, "Экономика",
+                "05.04.2000", 161573186 );
 
         Book book1 = new Book("Набоков В.В.", "Лолита");
         Book book2 = new Book("Джек Лондон", "Мартин Иден");
