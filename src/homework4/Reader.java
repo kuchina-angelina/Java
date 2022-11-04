@@ -19,12 +19,12 @@ public class Reader {
 
 
     public void takeBook(int number){//метод,который выводит информацию о том,сколько книг взял студент
-        System.out.println(this.FIO + "взял(а) " + number + " книг(и)");
+        System.out.println(FIO + "взял(а) " + number + " книг(и)");
 
     }
 
     public void returnBook(int number){//метод,который выводит информацию о том,сколько книг студент вернул
-        System.out.println(this.FIO + "вернул(а) " + number + " книг(и)");
+        System.out.println(FIO + "вернул(а) " + number + " книг(и)");
 
     }
 
@@ -33,9 +33,9 @@ public class Reader {
         for(Book book:books){//проходимя по переданным значениям и затем добавляем их в список
             arrayBooks.add(book.name);
         }
-        System.out.print(this.FIO + " взял(a) книги: ");
+        System.out.print(FIO + " взял(a) книги: ");
         for(String i:arrayBooks){
-            System.out.print(i + ", ");//проходимся по списку книг и выводим их названия
+            System.out.print("'" + i + "' "+ ", ");//проходимся по списку книг и выводим их названия
         }
     }
 
@@ -44,7 +44,7 @@ public class Reader {
         for(Book book:books){//проходимя по переданным значениям и затем добавляем их в список
             arrayBooks.add(book.name);
         }
-        System.out.println(this.FIO + " вернул(a) книги: ");
+        System.out.println(FIO + " вернул(a) книги: ");
         for(String i:arrayBooks){//проходимся по списку книг и выводим их названия
             System.out.println(i);
         }
@@ -52,17 +52,17 @@ public class Reader {
 
     public void takeBook(String ... nameBooks){//метод,который принимает переменное количество названий книг и выводит информацию,какие книги взял студент
         ArrayList<String> arrayBooks = new ArrayList<>(Arrays.asList(nameBooks));//закидываем названия всех книг в список
-        System.out.print(this.FIO + " взял(a) книги: ");
+        System.out.print(FIO + " взял(a) книги: ");
         for(String i:arrayBooks){//проходимся по списку книг и выводим на консоль их названия
-            System.out.print(i + ", ");
+            System.out.print("'" + i + "' "+ ", ");
         }
     }
 
     public void returnBook(String ... nameBooks){//метод,который принимает переменное количество названий книг и выводит информацию,какие книги студент вернул
         ArrayList<String> arrayBooks = new ArrayList<>(Arrays.asList(nameBooks));//закидываем названия всех книг в список
-        System.out.print(this.FIO + " вернул(a) книги: ");
+        System.out.print(FIO + " вернул(a) книги: ");
         for(String i:arrayBooks){//проходимся по списку книг и выводим на консоль их названия
-            System.out.print(i + ", ");
+            System.out.print("'" + i + "' "+ ", ");
         }
     }
 }
