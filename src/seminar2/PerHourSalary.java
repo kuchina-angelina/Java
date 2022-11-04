@@ -1,26 +1,40 @@
 package seminar2;
 
 public class PerHourSalary extends Workers{
-    double per_hourSalary;
-    String name;
     int id;
+    String first_name;//имя
+    String last_name;//фамилия
+    double salary;
+
 
     //конструктор класса
-    void per_hourSalary(String name, int id,double per_hourSalary){
-        this.name=name;
+    PerHourSalary(int id,String last_name,String first_name, double salary){
+        this.first_name=first_name;
+        this.last_name=last_name;
         this.id=id;
-        this.per_hourSalary=per_hourSalary;
+        this.salary=salary;
     }
-
     //метод из базового класса
     @Override
-    void countSalary() {
-        double average_salary = 20.8 * 8 * per_hourSalary;
-        System.out.println("Cреднемесячная зарплата = " + average_salary);
+    double countSalary() {
+        double average_salary = 20.8 * 8 * salary;
+//        System.out.println("Cреднемесячная зарплата = " + average_salary);
+        return average_salary;
     }
 
+    public int getId() {
+        return id;
+    }
 
+    public String lastName(){
+        return last_name;
+    }
 
+    public String firstName(){
+        return first_name;
+    }
 
-
+    public double getPer_hourSalary() {
+        return salary;
+    }
 }
