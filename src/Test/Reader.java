@@ -1,4 +1,4 @@
-package homework4;
+package Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -28,7 +28,7 @@ public class Reader {
 
     }
 
-    public void takeBook(Book ... books){//метод,который принимает переменное количество объектов класса Book и выводит информацию о том,какие книги взял студент
+    public void takeBook(Book... books){//метод,который принимает переменное количество объектов класса Book и выводит информацию о том,какие книги взял студент
         ArrayList<String> arrayBooks = new ArrayList<>();//создаем список,где у нас будут названия книг
         for(Book book:books){//проходимя по переданным значениям и затем добавляем их в список
             arrayBooks.add(book.name);

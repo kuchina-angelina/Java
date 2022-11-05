@@ -1,4 +1,7 @@
-package homework4;
+package Test;
+
+import Test.Book;
+import Test.Reader;
 
 public class Main {
     public static void main(String[] args) {
@@ -9,8 +12,8 @@ public class Main {
         Book book2 = new Book("Джек Лондон", "Мартин Иден");
         Book book3 = new Book("Булгаков М.А.", "Морфий");
 
-        reader.takeBook(3);
+//        reader.takeBook(3);
         reader.takeBook(book1, book2, book3);
-        reader.returnBook("Джейн Эйр","Третья девушка");
+//        reader.returnBook("Джейн Эйр","Третья девушка");
     }
 }
