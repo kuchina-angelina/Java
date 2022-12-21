@@ -33,7 +33,7 @@ public class Planner {
             LocalDate date = LocalDate.parse(endDate, formatter);
             LocalDate currentDate = LocalDate.now();
 
-            if(date.isAfter(currentDate)){
+            if(date.isAfter(currentDate)){//проверяем, чтобы дата выполнения не была раньше текущей
                 Task task = new Task(endDate,name, information); //затем введенные данные мы передаем в конструктор,чтобы создать задание
                 listOfTasks.add(task); //добавляем задание в список, где хранятся все планы
                 System.out.println();
@@ -46,7 +46,7 @@ public class Planner {
                 System.out.println("\u001B[32mЗадание успешно создано!\u001B[0m");
 
             }else {
-                System.out.println("\u001B[31mВы не можете установить дату,которая раньше текущей\u001B[0m");
+                System.out.println("\u001B[31mВы не можете установить дату,которая раньше текущей\u001B[0m");//если дата раньше текущей,то выведется сообщение
 
             }
 
