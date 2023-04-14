@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/2000/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Burger</title>
+    <link rel="stylesheet" th:href="@{/styles.css}" />
+</head>
+
+<body>
+    <h1>Order </h1>
+    <img th:src="@{/images/burger.jpeg}" />
+
+    <form th:action="@{/order}" method="post" th:object="${burgerOrder}">
+        <ul>
+            <li th:each="burger : ${burgerOrder.burgers}">  <!-- !!!!!!! add s-->
+                <!-- проходимся по объекту burgerOrder, где хранятся наши заказы и выводим их имена, которые мы ввели -->
+                <span th:text="${burger.name}">burger name</span>
+            </li>
+        </ul>
+
+        <div th:if="${#fields.hasErrors()}">
+            <span class="validationError">
+                <!-- если есть ошибки, то выведется ссобщение об этом и клиент не перейдет на страницу дальше, пока не введет корректные данные -->
+                Что-то пошло не так... Проверьте данные
+                <ul>
+                    <li th:each="err : ${#fields.errors()}" th:text="${err}">
+                </ul>
+            </span>
+        </div>
+
+        
+        <h3>Введите данные для доставки заказа:</h3>
+        <label for="firstName">Имя: </label>
+            <div>
+                <input type="text" th:field="*{firstName}"
+                
+                th:class="${#fields.hasErrors('firstName')}? fieldError"/>
+                <!--необходимо для вывода ошибок,чтобы было понятно какое поле не прошло проверку  -->
+            </div>
+
+        <label for="lastName">Фамилия: </label>
+            <div>
+                <input type="text" th:field="*{lastName}"
+                th:class="${#fields.hasErrors('lastName')}? fieldError"/>
+                <!--необходимо для вывода ошибок,чтобы было понятно какое поле не прошло проверку  -->
+
+            </div>
+
+        <label for="street">Адрес: </label>
+            <div>
+                <input type="text" th:field="*{street}"
+                th:class="${#fields.hasErrors('street')}? fieldError"/>
+                <!--необходимо для вывода ошибок,чтобы было понятно какое поле не прошло проверку  -->
+
+            </div>
+
+        <label for="city">Город: </label>
+            <div>
+                <input type="text" th:field="*{city}"
+                th:class="${#fields.hasErrors('city')}? fieldError"/>
+                <!--необходимо для вывода ошибок,чтобы было понятно какое поле не прошло проверку  -->
+            </div>
+            
+
+        <lable for="ccNumber">Номер карты: </lable>
+            <div>
+                <input type="text" th:field="*{ccNumber}">
+                
+            </div>
+            
+        <label for="ccExpiration">Срок действия карты: </label>
+            <div>
+                <input type="text" th:field="*{ccExpiration}"
+                th:class="${#fields.hasErrors('ccExpiration')}? fieldError"/>
+                <!--необходимо для вывода ошибок,чтобы было понятно какое поле не прошло проверку  -->
+            </div>
+            
+        <label for="CVV">CVV: </label>
+             <div>
+                <input type="text" th:field="*{CVV}"
+                th:class="${#fields.hasErrors('CVV')}? fieldError"/>
+                <!-- <input type="submit"> -->
+            </div>    
+
+        <input type="submit">
+        <!-- кнопка для отправки данных -->
+    </form>
+</body>
+
+</html>
