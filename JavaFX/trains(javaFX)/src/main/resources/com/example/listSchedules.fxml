@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+    <Label text="Город отправления: "/>
+    <Label fx:id="departureCityLabel"/>
+    <Label text="Город прибытия: "/>
+    <Label fx:id="arrivalCityLabel"/>
+    <Label text="Дата отправления: "/>
+    <Label fx:id="departureDateLabel"/>
+    <Label text="Время отправления: "/>
+    <Label fx:id="departureTimeLabel"/>
+    <Label text="Дата прибытия: "/>
+    <Label fx:id="arrivalDateLabel"/>
+    <Label text="Время прибытия: "/>
+    <Label fx:id="arrivalTimeLabel"/>
+    <Label text="Количество мест в поезде: "/>
+    <Label fx:id="trainSeatsCountLabel"/>
+    <Label text="Количество свободных мест: "/>
+    <Label fx:id="trainFreeSeatsCountLabel"/>
+    <Button id="backBtn" fx:id="backBtn" mnemonicParsing="false" onAction="#backTo" prefHeight="25.0" prefWidth="132.0" text="Назад" />
+
+</VBox>
